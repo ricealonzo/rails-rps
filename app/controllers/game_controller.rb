@@ -1,21 +1,6 @@
 class GameController < ApplicationController
-    
-  def rock
-    
-    selection = ["rock","paper","scissors"]
-    
-    @computer_selection = selection.sample
-    
-    if @computer_selection == "rock"
-      @outcome = "Tied"
-    elsif @computer_selection == "scissors"
-      @outcome = "You Win!"
-    else  @computer_selection == "paper"
-      @outcome = "You Lose!"
-    end
-    
-    render({:template => "/game_views/game_rock"})
-  
+  def home
+    render({:template => "/game_views/homepage"})
   end
   def rock
     
@@ -23,12 +8,29 @@ class GameController < ApplicationController
     
     @computer_selection = selection.sample
     
+    if @computer_selection == "rock"
+      @outcome = "We Tied!"
+    elsif @computer_selection == "scissors"
+      @outcome = "We Won!"
+    else  @computer_selection == "paper"
+      @outcome = "We lost!"
+    end
+    
+    render({:template => "/game_views/game_rock"})
+  
+  end
+  def paper
+    
+    selection = ["rock","paper","scissors"]
+    
+    @computer_selection = selection.sample
+    
     if @computer_selection == "paper"
-      @outcome = "Tied"
+      @outcome = "We tied!"
     elsif @computer_selection == "rock"
-      @outcome = "You Win!"
+      @outcome = "We won!"
     else  @computer_selection == "scissors"
-      @outcome = "You Lose!"
+      @outcome = "We lost!"
     end
     
     render({:template => "/game_views/game_paper"})
@@ -41,11 +43,11 @@ class GameController < ApplicationController
     @computer_selection = selection.sample
     
     if @computer_selection == "scissors"
-      @outcome = "Tied"
+      @outcome = "We tied!"
     elsif @computer_selection == "paper"
-      @outcome = "You Win!"
+      @outcome = "We won!"
     else  @computer_selection == "rock"
-      @outcome = "You Lose!"
+      @outcome = "We lost!"
     end
     
     render({:template => "/game_views/game_scissors"})
