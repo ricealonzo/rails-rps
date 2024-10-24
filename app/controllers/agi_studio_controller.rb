@@ -1,25 +1,30 @@
-class GameController < ApplicationController
+class AgiStudioController < ApplicationController
+  def login
+    @date= Date.today.day
+    render({:template=> "agi_admin/studio_login"})
+  end
   def home
-    render({:template => "/game_views/homepage"})
+    date= Date.today.day
+    render({:template=> "agi_admin/studio_login"})
   end
-  def rock
+  def admin
+    @date= Date.today
+    render({:plain => "Hello this is your admin page #{date}" })
     
-    selection = ["rock","paper","scissors"]
+    # selection = ["rock","paper","scissors"]
     
-    @computer_selection = selection.sample
+    # @computer_selection = selection.sample
     
-    if @computer_selection == "rock"
-      @outcome = "We Tied!"
-    elsif @computer_selection == "scissors"
-      @outcome = "We Won!"
-    else  @computer_selection == "paper"
-      @outcome = "We lost!"
-    end
-    
-    render({:template => "/game_views/game_rock"})
+    # if @computer_selection == "rock"
+    #   @outcome = "We Tied!"
+    # elsif @computer_selection == "scissors"
+    #   @outcome = "We Won!"
+    # else  @computer_selection == "paper"
+    #   @outcome = "We lost!"
+    # end
+end
   
-  end
-  def paper
+def paper
     
     selection = ["rock","paper","scissors"]
     
